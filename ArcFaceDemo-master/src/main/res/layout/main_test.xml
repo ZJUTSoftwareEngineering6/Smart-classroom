@@ -40,5 +40,19 @@
             android:text="检测识别" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView_QianDao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="74dp"
+        android:layout_marginEnd="99dp"
+        android:text="未签到"
+        android:textColor="#B10909"
+        android:textSize="24sp" />
+
 
 </RelativeLayout>

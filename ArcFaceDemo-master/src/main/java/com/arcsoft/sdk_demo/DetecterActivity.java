@@ -1,6 +1,7 @@
 package com.arcsoft.sdk_demo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arcsoft.ageestimation.ASAE_FSDKAge;
 import com.arcsoft.ageestimation.ASAE_FSDKEngine;
@@ -154,41 +156,54 @@ public class DetecterActivity extends Activity implements OnCameraListener, View
 				}
 
 				if (max > 0.6f) {
+					Intent res = new Intent();
+					//name相当于一个key,content是返回的内容
+					res.putExtra("res", "签到成功");
+					//resultCode是返回码,用来确定是哪个页面传来的数据，这里设置返回码是2
+					//这个页面传来数据,要用到下面这个方法setResult(int resultCode,Intent data)
+					setResult(2, res);
+					//结束当前页面
+					finish();
+					//finish();
+					//Toast.makeText(DetecterActivity.this, "验证成功！", Toast.LENGTH_SHORT).show();
 					//fr success.
-					final float max_score = max;
-					Log.d(TAG, "fit Score:" + max + ", NAME:" + name);
-					final String mNameShow = name;
-					mHandler.removeCallbacks(hide);
-					mHandler.post(new Runnable() {
-						@Override
-						public void run() {
-							mTextView.setAlpha(1.0f);
-							mTextView.setText(mNameShow);
-							mTextView.setTextColor(Color.RED);
-							mTextView1.setVisibility(View.VISIBLE);
-							mTextView1.setText("置信度：" + (float)((int)(max_score * 1000)) / 1000.0);
-							mTextView1.setTextColor(Color.RED);
-							mImageView.setRotation(rotate);
-							mImageView.setScaleY(-mCameraMirror);
-							mImageView.setImageAlpha(255);
-							mImageView.setImageBitmap(bmp);
-						}
-					});
-				} else {
+//					final float max_score = max;
+//					Log.d(TAG, "fit Score:" + max + ", NAME:" + name);
+//					final String mNameShow = name;
+//					mHandler.removeCallbacks(hide);
+//					mHandler.post(new Runnable() {
+//						@Override
+//						public void run() {
+//							mTextView.setAlpha(1.0f);
+//							mTextView.setText(mNameShow);
+//							mTextView.setTextColor(Color.RED);
+//							mTextView1.setVisibility(View.VISIBLE);
+//							mTextView1.setText("置信度：" + (float)((int)(max_score * 1000)) / 1000.0);
+//							mTextView1.setTextColor(Color.RED);
+//							mImageView.setRotation(rotate);
+//							mImageView.setScaleY(-mCameraMirror);
+//							mImageView.setImageAlpha(255);
+//							mImageView.setImageBitmap(bmp);
+//						}
+//					});
+					//startActivity(new Intent(DetecterActivity.this, MainActivity.class));
+					//Toast.makeText(DetecterActivity.this, "验证成功！", Toast.LENGTH_SHORT).show();
+				}
+				else {
 					final String mNameShow = "未识别";
 					DetecterActivity.this.runOnUiThread(new Runnable() {
 						@Override
 						public void run() {
 							mTextView.setAlpha(1.0f);
-							mTextView1.setVisibility(View.VISIBLE);
-							mTextView1.setText( gender + "," + age);
-							mTextView1.setTextColor(Color.RED);
+//							mTextView1.setVisibility(View.VISIBLE);
+//							mTextView1.setText( gender + "," + age);
+//							mTextView1.setTextColor(Color.RED);
 							mTextView.setText(mNameShow);
 							mTextView.setTextColor(Color.RED);
-							mImageView.setImageAlpha(255);
-							mImageView.setRotation(rotate);
-							mImageView.setScaleY(-mCameraMirror);
-							mImageView.setImageBitmap(bmp);
+//							mImageView.setImageAlpha(255);
+//							mImageView.setRotation(rotate);
+//							mImageView.setScaleY(-mCameraMirror);
+//							mImageView.setImageBitmap(bmp);
 						}
 					});
 				}

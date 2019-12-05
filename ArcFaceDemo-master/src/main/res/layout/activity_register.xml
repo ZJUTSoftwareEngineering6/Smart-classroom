@@ -16,9 +16,11 @@
         android:id="@+id/hlistView"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:scrollbars="none"
+        android:visibility="invisible"
         app:dividerHeight="1dp"
-        app:listSelector="@android:drawable/list_selector_background"/>
+        app:listSelector="@android:drawable/list_selector_background"
+        tools:visibility="invisible" />
 </RelativeLayout>

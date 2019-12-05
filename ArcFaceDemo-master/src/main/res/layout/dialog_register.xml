@@ -8,15 +8,17 @@
         android:id="@+id/extimageview"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/editview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/extimageview"
         android:layout_alignLeft="@+id/extimageview"
         android:layout_alignRight="@+id/extimageview"
-        android:layout_below="@+id/extimageview"
         android:layout_marginTop="16dp"
-        android:hint="输入名字"/>
+        android:hint="输入名字"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
 </RelativeLayout>

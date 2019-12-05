@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -53,6 +55,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+
+		if(resultCode == 2){//当请求码是1&&返回码是2进行下面操作
+			String res = data.getStringExtra("res");
+			TextView tv = (TextView)findViewById(R.id.textView_QianDao);
+			tv.setTextColor(Color.BLUE);
+			tv.setText(res);
+		}
 
 		if (requestCode == REQUEST_CODE_IMAGE_OP && resultCode == RESULT_OK) {
 			Uri mPath = data.getData();

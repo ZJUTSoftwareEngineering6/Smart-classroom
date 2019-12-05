@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -51,6 +52,9 @@ import java.util.Map;
  */
 
 public class RegisterActivity extends Activity implements SurfaceHolder.Callback {
+	private User nowUser = new User();
+	Context mContext;
+
 	private final String TAG = this.getClass().toString();
 	private final static int MSG_CODE = 0x1000;
 	private final static int MSG_EVENT_REG = 0x1001;
@@ -274,40 +278,49 @@ public class RegisterActivity extends Activity implements SurfaceHolder.Callback
 				if (msg.arg1 == MSG_EVENT_REG) {
 					LayoutInflater inflater = LayoutInflater.from(RegisterActivity.this);
 					View layout = inflater.inflate(R.layout.dialog_register, null);
-					mEditText = (EditText) layout.findViewById(R.id.editview);
-					mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)});
+					/*mEditText = (EditText) layout.findViewById(R.id.editview);
+					mEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(16)});*/
 					mExtImageView = (ExtImageView) layout.findViewById(R.id.extimageview);
 					mExtImageView.setImageBitmap((Bitmap) msg.obj);
 					final Bitmap face = (Bitmap) msg.obj;
 					new AlertDialog.Builder(RegisterActivity.this)
-							.setTitle("请输入注册名字")
+							.setTitle("识别成功！")
 							.setIcon(android.R.drawable.ic_dialog_info)
 							.setView(layout)
 							.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
-									((Application)RegisterActivity.this.getApplicationContext()).mFaceDB.addFace(mEditText.getText().toString(), mAFR_FSDKFace, face);
+									((Application)mContext.getApplicationContext()).mFaceDB.delete(nowUser.create);
+									mRegisterViewAdapter.notifyDataSetChanged();
+									((Application)RegisterActivity.this.getApplicationContext()).mFaceDB.addFace(nowUser.create/*mEditText.getText().toString()*/, mAFR_FSDKFace, face);
 									mRegisterViewAdapter.notifyDataSetChanged();
 									dialog.dismiss();
+									finish();
 								}
 							})
 							.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.dismiss();
+									finish();
 								}
 							})
 							.show();
 				} else if(msg.arg1 == MSG_EVENT_NO_FEATURE ){
 					Toast.makeText(RegisterActivity.this, "人脸特征无法检测，请换一张图片", Toast.LENGTH_SHORT).show();
+					finish();
 				} else if(msg.arg1 == MSG_EVENT_NO_FACE ){
 					Toast.makeText(RegisterActivity.this, "没有检测到人脸，请换一张图片", Toast.LENGTH_SHORT).show();
+					finish();
 				} else if(msg.arg1 == MSG_EVENT_FD_ERROR ){
 					Toast.makeText(RegisterActivity.this, "FD初始化失败，错误码：" + msg.arg2, Toast.LENGTH_SHORT).show();
+					finish();
 				} else if(msg.arg1 == MSG_EVENT_FR_ERROR){
 					Toast.makeText(RegisterActivity.this, "FR初始化失败，错误码：" + msg.arg2, Toast.LENGTH_SHORT).show();
+					finish();
 				} else if(msg.arg1 == MSG_EVENT_IMG_ERROR){
 					Toast.makeText(RegisterActivity.this, "图像格式错误，：" + msg.obj, Toast.LENGTH_SHORT).show();
+					finish();
 				}
 			}
 		}
@@ -319,7 +332,6 @@ public class RegisterActivity extends Activity implements SurfaceHolder.Callback
 	}
 
 	class RegisterViewAdapter extends BaseAdapter implements AdapterView.OnItemClickListener{
-		Context mContext;
 		LayoutInflater mLInflater;
 
 		public RegisterViewAdapter(Context c) {
