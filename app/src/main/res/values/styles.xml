@@ -8,4 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--base theme light-->
+    <style name="Base.App.Theme.Light" parent="@style/Theme.AppCompat.Light">
+
+    </style>
+    <!-- 日间模式 -->
+    <style name="App.Theme.Light" parent="Base.App.Theme.Light" />
+
+    <style name="Base.App.Theme.NoTitle" parent="App.Theme.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Account_Base.App.Theme.NoTitle" parent="Base.App.Theme.NoTitle">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
