@@ -1,10 +1,5 @@
 package com.example.updownload.Util;
 
-import android.os.Looper;
-import android.widget.Toast;
-
-import com.example.updownload.MainActivity;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -19,7 +14,7 @@ import java.util.Map;
 public class UploadUtil {
     public boolean upload(String newpath){
         try {
-            String actionUrl = "http://47.100.139.52:8080/android_war/Servlet.do";
+            String actionUrl = "http://47.101.150.40:80/SoftwareDesign/UploadServlet.do";
             Map<String, String> params = new HashMap<String, String>();
             String fileName = "";
             params.put("name", "");
@@ -35,6 +30,7 @@ public class UploadUtil {
             String PREFIX = "--", LINEND = "\r\n";
             String MULTIPART_FROM_DATA = "multipart/form-data";
             String CHARSET = "UTF-8";
+            //HttpURLConnection连接一些必要的配置
             URL uri = new URL(actionUrl);
             HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
             conn.setReadTimeout(5 * 1000); // 缓存的最长时间
@@ -45,6 +41,7 @@ public class UploadUtil {
             conn.setRequestProperty("connection", "keep-alive");
             conn.setRequestProperty("charsert", "UTF-8");
             conn.setRequestProperty("Content-Type", MULTIPART_FROM_DATA+ ";boundary=" + BOUNDARY);
+
             // 首先组拼文本类型的参数
             StringBuilder sb = new StringBuilder();
             for (Map.Entry<String, String> entry : params.entrySet()) {
@@ -60,15 +57,16 @@ public class UploadUtil {
             }
             DataOutputStream outStream = new DataOutputStream(conn.getOutputStream());
             outStream.write(sb.toString().getBytes());
+
             // 发送文件数据
-            if (files != null)
+            if (files != null) {
                 for (Map.Entry<String, File> file : files.entrySet()) {
                     StringBuilder sb1 = new StringBuilder();
                     sb1.append(PREFIX);
                     sb1.append(BOUNDARY);
                     sb1.append(LINEND);
-                    sb1.append("Content-Disposition: form-data; name=\"j5eQkZqZlpOa\"; filename=\""+ file.getKey() + "\"" + LINEND);
-                    sb1.append("Content-Type: application/octet-stream; charset="+ CHARSET + LINEND);
+                    sb1.append("Content-Disposition: form-data; name=\"j5eQkZqZlpOa\"; filename=\"" + file.getKey() + "\"" + LINEND);
+                    sb1.append("Content-Type: application/octet-stream; charset=" + CHARSET + LINEND);
                     sb1.append(LINEND);
                     outStream.write(sb1.toString().getBytes());
                     InputStream is = new FileInputStream(file.getValue());
@@ -80,7 +78,7 @@ public class UploadUtil {
                     is.close();
                     outStream.write(LINEND.getBytes());
                 }
-
+            }
 
             // 请求结束标志
             byte[] end_data = (PREFIX + BOUNDARY + PREFIX + LINEND).getBytes();

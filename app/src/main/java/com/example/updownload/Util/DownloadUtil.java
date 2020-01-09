@@ -1,8 +1,5 @@
 package com.example.updownload.Util;
 
-import android.os.Looper;
-import android.widget.Toast;
-
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -15,8 +12,8 @@ public class DownloadUtil {
         try {
             URL url = new URL(getUtf8Url(path));
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setReadTimeout(50000);
-            con.setConnectTimeout(50000);
+            con.setReadTimeout(5000);
+            con.setConnectTimeout(5000);
             con.setRequestProperty("Charset", "UTF-8");
             con.setRequestMethod("GET");
             if (con.getResponseCode() == 200) {

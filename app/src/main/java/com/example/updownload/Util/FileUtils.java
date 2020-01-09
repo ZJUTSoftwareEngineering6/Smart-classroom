@@ -10,7 +10,7 @@ public class FileUtils {
 
     public FileUtils() {
         File file = new File(path);
-        /**
+        /*
          *如果文件夹不存在就创建
          */
         if (!file.exists()) {
@@ -18,11 +18,7 @@ public class FileUtils {
         }
     }
 
-    /**
-     * 创建一个文件
-     * @param FileName 文件名
-     * @return
-     */
+    //创建文件
     public File createFile(String FileName) {
         return new File(path, FileName);
     }
