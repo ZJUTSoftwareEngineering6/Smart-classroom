@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context="com.example.updownload.weather.TemperatureShowActivity"
+    android:background="@drawable/light_backgroud">
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:text="光线强度低于5时开启教室灯光，大于5时自动关闭"
+        android:textColor="#99FF33"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_accuracy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#99FF33"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/et_lux"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#99FF33"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="返回主界面"
+        android:textColor="#99FF33"
+        android:background="@android:color/transparent"
+        android:textSize="20sp"/>
+
+</LinearLayout>

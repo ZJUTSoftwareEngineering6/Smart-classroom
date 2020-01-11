@@ -23,8 +23,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.updownload.Class.UserService;
 import com.example.updownload.CourseActivity;
 import com.example.updownload.HomeActivity;
+import com.example.updownload.LoginActivity;
 import com.example.updownload.R;
 import com.example.updownload.UpDownloadActivity;
 
@@ -34,6 +36,7 @@ public class MainFaceSignInActivity extends Activity implements OnClickListener 
 	private static final int REQUEST_CODE_IMAGE_CAMERA = 1;
 	private static final int REQUEST_CODE_IMAGE_OP = 2;
 	private static final int REQUEST_CODE_OP = 3;
+
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -58,8 +61,8 @@ public class MainFaceSignInActivity extends Activity implements OnClickListener 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainFaceSignInActivity.this, HomeActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				startActivity(intent);
-				finish();
 			}
 		});
 		//课表页跳转
@@ -68,8 +71,8 @@ public class MainFaceSignInActivity extends Activity implements OnClickListener 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainFaceSignInActivity.this, CourseActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				startActivity(intent);
-				finish();
 			}
 		});
 		//上传页跳转
@@ -78,8 +81,8 @@ public class MainFaceSignInActivity extends Activity implements OnClickListener 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainFaceSignInActivity.this, UpDownloadActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				startActivity(intent);
-				finish();
 			}
 		});
 		//我的页跳转
@@ -88,8 +91,8 @@ public class MainFaceSignInActivity extends Activity implements OnClickListener 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainFaceSignInActivity.this, MineActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 				startActivity(intent);
-				finish();
 			}
 		});
 	}
@@ -164,7 +167,6 @@ public class MainFaceSignInActivity extends Activity implements OnClickListener 
                             })
                             .create();
                     alertDialog2.show();
-
                     break;
                 }
 				if( ((Application)getApplicationContext()).mFaceDB.mRegister.isEmpty() ) {

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:layout_gravity="center"
+    android:background="@drawable/background4"
+    tools:context="com.example.updownload.qrcode.SignActivity">
+
+    <!--填写倒计时时间-->
+<!--    <EditText-->
+<!--        android:id="@+id/input"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textSize="20sp"-->
+<!--        android:hint="以秒为单位"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:ems="10"/>-->
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="单位：秒"
+        android:textSize="20sp"
+        android:background="@drawable/bg_edit"
+        android:paddingLeft="115dp"
+        android:drawablePadding="12dp"
+        android:drawableLeft="@drawable/clock"
+        android:maxLines="1"
+        android:layout_marginTop="50dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--开始计时-->
+        <Button
+            android:id="@+id/btn_get_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="75dp"
+            android:text="开始签到"/>
+
+        <!--暂停/继续-->
+        <Button
+            android:id="@+id/btn_stop_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="暂停/继续"
+            android:layout_marginLeft="15dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:src="@drawable/sign_in"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        />
+
+    <!--显示倒计时-->
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:textColor="#FFFF00"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

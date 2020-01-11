@@ -1,6 +1,6 @@
 <resources>
-<!--    <string name="app_name">UpDownload</string>-->
-<!--    <string name="title_activity_main2">Main2Activity</string>-->
+    <!--    <string name="app_name">UpDownload</string>-->
+    <!--    <string name="title_activity_main2">Main2Activity</string>-->
     <string name="app_name">登录界面</string>
 
     <!--新版登录专用-->
@@ -29,4 +29,5 @@
     <string name="reset_pwd_submit">确认</string>
     <string name="message_pwd_error">密码错误</string>
     <string name="message_username_null">用户名未填写！！！</string>
+    <string name="title_activity_teacher">TeacherActivity</string>
 </resources>

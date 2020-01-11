@@ -8,7 +8,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:name=".sdk_demo.Application"
         android:allowBackup="true"
@@ -18,38 +25,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
-        </activity>
-        <activity android:name=".UpDownloadActivity">
-        </activity>
-        <activity android:name=".CourseActivity"/>
-        <activity android:name="com.example.updownload.sdk_demo.PermissionActivity">
+        <activity
+            android:name=".TeacherActivity"
+            android:label="@string/title_activity_teacher"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".UpDownloadActivity"></activity>
+        <activity android:name=".CourseActivity" />
+        <activity android:name=".sdk_demo.PermissionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.updownload.sdk_demo.RegisterFaceActivity">
-        </activity>
-        <activity android:name="com.example.updownload.sdk_demo.DetecterActivity">
-        </activity>
-        <activity android:name="com.example.updownload.sdk_demo.MainFaceSignInActivity">
-        </activity>
-        <activity android:name="com.example.updownload.sdk_demo.MineActivity">
-        </activity>
+        <activity android:name=".sdk_demo.RegisterFaceActivity"></activity>
+        <activity android:name=".sdk_demo.DetecterActivity"></activity>
+        <activity android:name=".sdk_demo.MainFaceSignInActivity"></activity>
+        <activity android:name=".sdk_demo.MineActivity"></activity>
+        <activity android:name=".music.MusicActivity"></activity>
+        <activity android:name=".weather.TemperatureShowActivity"></activity>
+        <activity android:name=".classroom.MainClassroomActivity"></activity>
+        <activity android:name=".classroom.LightControlActivity"></activity>
+        <activity android:name=".classroom.TemperatureControlActivity"></activity>
+        <activity android:name=".scan.CameraScanningActivity"></activity>
+        <activity android:name=".scan.ZXingActivity"></activity>
+        <activity android:name=".scan.ZXingDealActivity"></activity>
+        <activity android:name=".qrcode.QrcodeActivity"></activity>
+        <activity android:name=".qrcode.SignActivity"></activity>
         <activity
-            android:name="com.example.updownload.LoginActivity"
+            android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="登录"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Account_Base.App.Theme.NoTitle"
-            android:windowSoftInputMode="stateHidden|adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
         <activity
-            android:name="com.example.updownload.RegisterActivity"
+            android:name=".RegisterActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="注册"
             android:launchMode="singleTop"
@@ -57,13 +71,15 @@
             android:theme="@style/Account_Base.App.Theme.NoTitle"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.example.updownload.ForgetPwdActivity"
+            android:name=".ForgetPwdActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="密码找回"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Account_Base.App.Theme.NoTitle"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <service android:name=".music.MusicService" />
     </application>
 
 </manifest>

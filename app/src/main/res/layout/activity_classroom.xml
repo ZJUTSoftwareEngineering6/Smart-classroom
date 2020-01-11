@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical"
+    tools:context="com.example.updownload.classroom.MainClassroomActivity">
+
+    <Button
+        android:id="@+id/btn_light_control"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:text="灯光控制"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_temperature_control"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="温度控制"
+        android:textSize="20sp" />
+
+</LinearLayout>

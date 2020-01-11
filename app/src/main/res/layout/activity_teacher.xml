@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.updownload.TeacherActivity">
+    <Button
+        android:id="@+id/search"
+        android:text="查看签到情况"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ListView
+        android:id="@+id/sign_list"
+        android:layout_below="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="322dp" />
+    <EditText
+        android:id="@+id/sign"
+        android:layout_below="@+id/sign_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/update"
+        android:text="签到"
+        android:layout_below="@+id/sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

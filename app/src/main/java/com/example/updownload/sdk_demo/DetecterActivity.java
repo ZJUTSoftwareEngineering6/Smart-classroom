@@ -37,6 +37,8 @@ import com.arcsoft.genderestimation.ASGE_FSDKError;
 import com.arcsoft.genderestimation.ASGE_FSDKFace;
 import com.arcsoft.genderestimation.ASGE_FSDKGender;
 import com.arcsoft.genderestimation.ASGE_FSDKVersion;
+import com.example.updownload.Class.UserService;
+import com.example.updownload.LoginActivity;
 import com.example.updownload.R;
 import com.guo.android_extend.GLES2Render;
 import com.guo.android_extend.java.AbsLoop;
@@ -62,6 +64,8 @@ public class DetecterActivity extends Activity implements OnCameraListener, View
 	private CameraSurfaceView mSurfaceView;
 	private CameraGLSurfaceView mGLSurfaceView;
 	private Camera mCamera;
+
+	private UserService uService = new UserService();
 
 	AFT_FSDKVersion version = new AFT_FSDKVersion();
 	AFT_FSDKEngine engine = new AFT_FSDKEngine();
@@ -162,6 +166,14 @@ public class DetecterActivity extends Activity implements OnCameraListener, View
 					//resultCode是返回码,用来确定是哪个页面传来的数据，这里设置返回码是2
 					//这个页面传来数据,要用到下面这个方法setResult(int resultCode,Intent data)
 					setResult(2, res);
+					//修改签到信息
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							String username = LoginActivity.curUser.userName;
+							uService.update(username);
+						}
+					}).start();
 					//结束当前页面
 					finish();
 

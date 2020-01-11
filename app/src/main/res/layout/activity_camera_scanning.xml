@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context="com.example.updownload.scan.CameraScanningActivity">
+
+    <Button
+        android:id="@+id/btn_Camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="扫码签到"
+        android:textSize="20dp"/>
+
+</LinearLayout>

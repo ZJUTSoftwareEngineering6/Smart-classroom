@@ -20,6 +20,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+;
 import com.example.updownload.Class.*;
 import com.example.updownload.sdk_demo.User;
 
@@ -133,7 +134,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        curUser.init();
                         login_flag = loginRequest();
                         Handler handler = new Handler(Looper.getMainLooper());
                         handler.post(new Runnable() {
@@ -370,17 +370,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean loginRequest() {
         String et_login_name = mEtLoginUsername.getText().toString();
         String et_login_pwd = mEtLoginPwd.getText().toString();
-        boolean flag = uService.check(et_login_name, et_login_pwd);
-        flag = true;
-        if (flag) {
+        int flag = uService.check(et_login_name, et_login_pwd);
+        //测试用
+//        flag = true;
+        LoginActivity.curUser.userId = et_login_name;
+        if (flag == 2) {
             //Log.i("TAG","登录成功");
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
             return true;
+        } else if (flag == 1){
+            Intent intent = new Intent(LoginActivity.this, TeacherActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
         } else {
-            ///Log.i("TAG","登录失败");
-
             return false;
         }
        /* if(et_login_name.equals("13758829072")&&et_login_pwd.equals("123456")){
